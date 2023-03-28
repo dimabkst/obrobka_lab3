@@ -1,3 +1,6 @@
+from os import path
+from PIL import Image
+
 if __name__ == "__main__":
     try:
         pass
