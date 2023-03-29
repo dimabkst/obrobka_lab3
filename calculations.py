@@ -57,15 +57,15 @@ def euclidean_distance(dim: int, p: Iterable[float], q: Iterable[float]) -> floa
     for i in range(dim):
         res += (p[i] - q[i]) ** 2
     
-    return res ** (1 / dim)
+    return res ** 0.5
 
-def distances_to_standartPhi1Phi2(Phi1Phi2: Dict[str, float], standartImageNames: List[str]) -> Dict[str, Dict[str, float]]:
+def distances_to_standart_Phi1Phi2(Phi1Phi2: Dict[str, float], standartImageNames: List[str]) -> Dict[str, Dict[str, float]]:
     imageToClassifyNames = [key for key in Phi1Phi2.keys() if key not in standartImageNames]
 
     Phi1Phi2_distances = {}
 
     for imageToClassifyName in imageToClassifyNames:
-        Phi1Phi2_distances[imageToClassifyName] = {'Phi1':{}, 'Phi2': {}, 'Phi1Phi2': {}}
+        Phi1Phi2_distances[imageToClassifyName] = {'Phi1': {}, 'Phi2': {}, 'Phi1Phi2': {}}
         for standartImageName in standartImageNames:
             Phi1Phi2_distances[imageToClassifyName]['Phi1'][standartImageName] = euclidean_distance(1, [Phi1Phi2[imageToClassifyName]['Phi1']], [Phi1Phi2[standartImageName]['Phi1']])
             Phi1Phi2_distances[imageToClassifyName]['Phi2'][standartImageName] = euclidean_distance(1, [Phi1Phi2[imageToClassifyName]['Phi2']], [Phi1Phi2[standartImageName]['Phi2']])

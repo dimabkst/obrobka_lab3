@@ -1,8 +1,8 @@
 from os import path
 from traceback import print_exc
 from PIL import Image
-from calculations import image_Phi1Phi2, distances_to_standartPhi1Phi2
-from utils import Phi1Phi2_info_print
+from calculations import image_Phi1Phi2, distances_to_standart_Phi1Phi2
+from utils import Phi1Phi2_info_print, distances_to_standart_Phi1Phi2_info_print
 
 if __name__ == "__main__":
     try:
@@ -25,9 +25,13 @@ if __name__ == "__main__":
                 Phi1Phi2[imageName] = image_Phi1Phi2(im)
 
         # printing Phi1, Phi2 results
-        Phi1Phi2_info_print(Phi1Phi2, standartImageNames + imageToClassifyNames, standartImageNames)
+        Phi1Phi2_info_print(Phi1Phi2, standartImageNames)
+        
+        # getting distances
+        distances_to_standart_Phi1Phi2_res = distances_to_standart_Phi1Phi2(Phi1Phi2, standartImageNames)
 
-        print(distances_to_standartPhi1Phi2(Phi1Phi2, standartImageNames))
+        # printing distances
+        distances_to_standart_Phi1Phi2_info_print(distances_to_standart_Phi1Phi2_res, standartImageNames)
     except Exception as e:
         print('Error occured:')
         print_exc()
