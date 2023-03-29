@@ -1,7 +1,7 @@
 from os import path
 from traceback import print_exc
 from PIL import Image
-from calculations import image_Phi1Phi2, distances_to_standart_Phi1Phi2
+from calculations import image_Phi1Phi2, distances_to_standart_Phi1Phi2, classify
 from utils import Phi1Phi2_info_print, distances_to_standart_Phi1Phi2_info_print
 
 if __name__ == "__main__":
@@ -30,8 +30,12 @@ if __name__ == "__main__":
         # getting distances
         distances_to_standart_Phi1Phi2_res = distances_to_standart_Phi1Phi2(Phi1Phi2, standartImageNames)
 
-        # printing distances
-        distances_to_standart_Phi1Phi2_info_print(distances_to_standart_Phi1Phi2_res, standartImageNames)
+        # getting classification
+        classification = classify(distances_to_standart_Phi1Phi2_res)
+
+        # printing distances with classification
+        distances_to_standart_Phi1Phi2_info_print(distances_to_standart_Phi1Phi2_res, standartImageNames, classification)
+
     except Exception as e:
         print('Error occured:')
         print_exc()
