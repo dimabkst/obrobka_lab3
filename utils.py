@@ -14,3 +14,5 @@ def Phi1Phi2_info_print(Phi1Phi2: Dict[str, float], imageNames: List[str], stand
             print("\nImages to classify:")
             Phi1Phi2_head_print()
         print(f"{imageName:<11}|{Phi1Phi2[imageName]['Phi1']:<22}|{Phi1Phi2[imageName]['Phi2']:<22}")
+    
+    print()

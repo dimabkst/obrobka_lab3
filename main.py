@@ -1,7 +1,7 @@
 from os import path
 from traceback import print_exc
 from PIL import Image
-from calculations import image_Phi1_Phi2
+from calculations import image_Phi1Phi2, distances_to_standartPhi1Phi2
 from utils import Phi1Phi2_info_print
 
 if __name__ == "__main__":
@@ -22,10 +22,12 @@ if __name__ == "__main__":
         for imageName, imagePath in imagesInfo.items():
             with Image.open(imagePath) as im:
                 im = im.convert("L")
-                Phi1Phi2[imageName] = image_Phi1_Phi2(im)
+                Phi1Phi2[imageName] = image_Phi1Phi2(im)
 
         # printing Phi1, Phi2 results
         Phi1Phi2_info_print(Phi1Phi2, standartImageNames + imageToClassifyNames, standartImageNames)
+
+        print(distances_to_standartPhi1Phi2(Phi1Phi2, standartImageNames))
     except Exception as e:
         print('Error occured:')
         print_exc()
